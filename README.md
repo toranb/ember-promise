@@ -1,25 +1,52 @@
 # Ember-promise
 
-This README outlines the details of collaborating on this Ember addon.
+[![Build Status][]](https://travis-ci.org/toranb/ember-promise)
+
+## Description
+
+A simple promise object that will wrap xhr resolve/reject with an ember.run
 
 ## Installation
+```
+# install via npm
+$ npm install ember-promise --save-dev
+```
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+## Basic Usage
 
-## Running
+```js
+import Ember from 'ember';
+import PromiseMixin from 'ember-promise/mixins/promise';
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+var PeopleRoute = Ember.Route.extend({
+    model: function() {
+        var people = [];
+        PromiseMixin.xhr("/api/people", "GET").then(function(response) {
+            response.forEach(function(person) {
+                people.pushObject(Ember.Object.create(person));
+            });
+        });
+        return people;
+    }
+});
 
-## Running Tests
+export default PeopleRoute;
+```
 
-* `ember test`
-* `ember test --server`
+## Running the unit tests
 
-## Building
+    npm install
+    ember test
 
-* `ember build`
+## Example project
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+https://github.com/toranb/ember-cli-store-example
+
+## License
+
+Copyright © 2015 Toran Billups http://toranbillups.com
+
+Licensed under the MIT License
+
+
+[Build Status]: https://travis-ci.org/toranb/ember-promise.svg?branch=master
