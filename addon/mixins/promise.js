@@ -7,6 +7,7 @@ var PromiseMixin = Ember.Object.create({
         hash.type = type;
         hash.dataType = "json";
         hash.cache = false;
+        hash.contentType = "application/json";
         return new Ember.RSVP.Promise(function(resolve, reject) {
             hash.success = function(json) {
                 return Ember.run(null, resolve, json);
