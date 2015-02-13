@@ -1,6 +1,6 @@
 {
   "name": "ember-promise",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A simple promise object that will wrap xhr resolve/reject with an ember.run",
   "directories": {
     "doc": "doc",

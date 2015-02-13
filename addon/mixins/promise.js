@@ -4,7 +4,7 @@ var PromiseMixin = Ember.Object.create({
     xhr: function(url, type, hash) {
         hash = hash || {};
         hash.url = url;
-        hash.type = type;
+        hash.type = type || "GET";
         hash.dataType = "json";
         hash.cache = false;
         hash.contentType = "application/json";
