@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 var PromiseMixin = Ember.Object.create({
-    xhr: function(url, type, hash) {
+    xhr: function(url, method, hash) {
         hash = hash || {};
         hash.url = url;
-        hash.type = type || "GET";
+        hash.method = method || "GET";
         hash.dataType = "json";
         hash.cache = false;
         hash.contentType = "application/json";
