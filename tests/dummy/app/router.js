@@ -10,6 +10,8 @@ Router.map(function() {
     this.route("default", { path: "/default" });
     this.route("onerror", { path: "/onerror" });
     this.route("onerror-with-handler", { path: "/onerror-with-handler" });
+    this.route("onerror-with-multiple-handlers", { path: "/onerror-with-multiple-handlers" });
+    this.route("onerror-with-multiple-error-handlers", { path: "/onerror-with-multiple-error-handlers" });
 });
 
 export default Router;

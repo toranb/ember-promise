@@ -20,7 +20,7 @@ var PromiseMixin = Ember.Object.create({
                 Ember.run(self, "onError", json, textStatus, errorThrown);
                 return Ember.run(null, reject, json);
             };
-            $.ajax(hash);
+            Ember.$.ajax(hash);
         });
     },
     onError: function() {

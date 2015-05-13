@@ -4,19 +4,13 @@ import ErrorHandler from "../utilities/error-handler";
 
 var OnErrorRoute = Ember.Route.extend({
     model: function() {
-        var people = [];
-        PromiseMixin.onError = function(json, textStatus, errorThrown) {
-            ErrorHandler.accessed = true;
-            ErrorHandler.json = json;
-            ErrorHandler.textStatus = textStatus;
-            ErrorHandler.errorThrown = errorThrown;
-        };
-        PromiseMixin.xhr("/api/bad", "GET").then(function(response) {
+        var people = Ember.A();
+        PromiseMixin.xhr("/api/bad-with-handler", "GET").then(function(response) {
             response.forEach(function(person) {
                 people.pushObject(Ember.Object.create(person));
             });
         }, function() {
-            ErrorHandler.handled = true;
+            ErrorHandler.handled = 1;
         });
         return people;
     }
