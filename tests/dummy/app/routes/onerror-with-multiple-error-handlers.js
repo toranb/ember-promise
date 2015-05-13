@@ -10,9 +10,9 @@ var OnErrorRoute = Ember.Route.extend({
             response.forEach(function(person) {
                 people.pushObject(Ember.Object.create(person));
             });
-        }, function(response) {
+        }, function() {
             ErrorHandler.handled = 1;
-            response.forEach(function(){});
+            throw new Error("wat");
         }).then(function(){
             SuccessHandler.handled = 1;
         }, function() {
