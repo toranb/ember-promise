@@ -22,16 +22,10 @@ var PromiseMixin = Ember.Object.create({
         });
     },
     configureAjaxDefaults: function(hash) {
-        if(!hash.method) {
-            hash.method = "GET";
-        }
-        if(hash.dataType === undefined) {
-            hash.dataType = "json";
-        }
-        if(hash.cache === undefined) {
-            hash.cache = false;
-        }
-        if(hash.contentType === undefined && hash.data) {
+        hash.method = hash.method || "GET";
+        hash.dataType = hash.dataType || "json";
+        hash.cache = hash.cache || false;
+        if(!hash.contentType && hash.data) {
             hash.contentType = "application/json";
         }
         return hash;
