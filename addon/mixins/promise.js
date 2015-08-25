@@ -5,10 +5,8 @@ var PromiseMixin = Ember.Object.create({
         var self = this;
         hash = hash || {};
         hash.url = url;
-        hash.method = method || "GET";
-        hash.dataType = "json";
-        hash.cache = false;
-        hash.contentType = "application/json";
+        hash.method = method;
+        hash = this.configureAjaxDefaults(hash);
         return new Ember.RSVP.Promise(function(resolve, reject) {
             hash.success = function(json) {
                 return Ember.run(null, resolve, json);
@@ -23,8 +21,16 @@ var PromiseMixin = Ember.Object.create({
             Ember.$.ajax(hash);
         });
     },
-    onError: function() {
-    }
+    configureAjaxDefaults: function(hash) {
+        hash.method = hash.method || "GET";
+        hash.dataType = hash.dataType || "json";
+        hash.cache = hash.cache || false;
+        if(!hash.contentType && hash.data) {
+            hash.contentType = "application/json";
+        }
+        return hash;
+    },
+    onError: function() { }
 });
 
 export default PromiseMixin;
