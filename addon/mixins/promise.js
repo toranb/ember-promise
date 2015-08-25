@@ -31,7 +31,7 @@ var PromiseMixin = Ember.Object.create({
         if(hash.cache === undefined) {
             hash.cache = false;
         }
-        if(hash.contentType === undefined && hash.method !== "GET") {
+        if(hash.contentType === undefined && hash.data) {
             hash.contentType = "application/json";
         }
         return hash;
